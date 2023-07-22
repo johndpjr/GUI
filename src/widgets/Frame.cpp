@@ -4,7 +4,7 @@ Frame::Frame(Frame* parent_frame, SDL_Color bg)
     : Widget(parent_frame, new SDL_Rect{0,0,0,0}, bg)
 {
     if (m_parent != nullptr)
-        m_parent->addChild(this);
+        m_parent->add_child(this);
 }
 
 Frame::Frame(SDL_Rect* window_rect)

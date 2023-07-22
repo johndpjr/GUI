@@ -20,6 +20,6 @@ bool Widget::is_shown() const { return m_is_shown; }
 
 std::vector<Widget *> Widget::children() const { return m_children; }
 
-void Widget::addChild(Widget *child) {
+void Widget::add_child(Widget *child) {
     m_children.push_back(child);
 }

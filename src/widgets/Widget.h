@@ -13,7 +13,6 @@ public:
     Widget(Widget* m_parent, SDL_Rect* rect, SDL_Color bg = Colors::WHITE, bool is_shown = false);
     ~Widget();
 
-    friend class Window;
     friend class Frame;
 protected:
     Widget* m_parent;
@@ -30,7 +29,7 @@ public:
     [[nodiscard]] bool contains(int x, int y) const;
     [[nodiscard]] bool is_shown() const;
     [[nodiscard]] std::vector<Widget*> children() const;
-    void addChild(Widget* child);
+    void add_child(Widget* child);
 
     virtual void pack(Side side, Direction anchor) = 0;
 };

@@ -23,8 +23,8 @@ private:
 
     // Draws the frame and all its children.
     void draw(SDL_Renderer* renderer) override;
-    void on_click(int x, int y) override;
 public:
+    void on_click(int x, int y) override;
     void pack(Side side, Direction anchor) override;
 };
 

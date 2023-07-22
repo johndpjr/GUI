@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "events/EventManager.h"
 
 Window::Window(const std::string& title, int width, int height)
     : m_window{nullptr}, m_renderer{nullptr},
@@ -10,6 +11,7 @@ Window::Window(const std::string& title, int width, int height)
     if (m_window == nullptr)
         throw std::runtime_error(SDL_GetError());
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+    EventManager::Init();
 }
 
 Window::~Window()
@@ -26,33 +28,13 @@ Frame* Window::root_frame() {
 
 void Window::mainloop() {
     while (!m_quit) {
-        update();
-        // TODO: move this to a draw manager (when more complicated)
+        EventManager::Update(this);
         SDL_RenderClear(m_renderer);
         m_root_frame->draw(m_renderer);
         SDL_RenderPresent(m_renderer);
     }
 }
 
-// TODO: move this to an event manager (when more complicated)
-void Window::update() {
-    SDL_Event e;
-    while (SDL_PollEvent(&e)) {
-        switch (e.type) {
-            case SDL_QUIT:
-                m_quit = true;
-                break;
-            case SDL_KEYDOWN:
-                printf("Key pressed!\n");
-                break;
-            case SDL_MOUSEBUTTONDOWN: {
-                int mposx {e.button.x}, mposy {e.button.y};
-                printf("x: %d | y: %d\n", mposx, mposy);
-                m_root_frame->on_click(mposx, mposy);
-                break;
-            }
-            default:
-                break;
-        }
-    }
+void Window::quit() {
+    m_quit = true;
 }

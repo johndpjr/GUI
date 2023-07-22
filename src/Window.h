@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <string>
+
 #include "widgets/Frame.h"
 
 class Window {
@@ -17,7 +18,7 @@ private:
 public:
     Frame* root_frame();
     void mainloop();
-    void update();
+    void quit();
 };
 
 

@@ -7,7 +7,7 @@ Button::Button(Widget* parent, void (*callback)(), SDL_Color bg)
         40,20}, bg), m_callback{callback}
 {
     if (m_parent != nullptr)
-        m_parent->addChild(this);
+        m_parent->add_child(this);
 }
 
 void Button::draw(SDL_Renderer* renderer) {
@@ -24,7 +24,6 @@ void Button::on_click(int x, int y) {
 }
 
 void Button::update_children() {
-    // TODO: updating children buttons
 }
 
 void Button::pack(Side side, Direction anchor) {
