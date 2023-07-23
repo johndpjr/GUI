@@ -2,6 +2,7 @@
 #define GUI_WIDGET_H
 #include <vector>
 #include "../sdl/sdl.h"
+#include "../renderer/Renderer.h"
 #include "../misc/colors.h"
 #include "../math/utils.h"
 #include "../misc/enums.h"
@@ -21,7 +22,7 @@ protected:
     sdl::types::Color m_bg_color;
     bool m_is_shown;
 
-    virtual void draw(sdl::types::Renderer *renderer) = 0;
+    virtual void draw(Renderer *renderer) = 0;
     virtual void on_click(int x, int y) = 0;
     virtual void update_children() = 0;
 public:

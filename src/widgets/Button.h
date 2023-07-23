@@ -11,7 +11,7 @@ public:
 private:
     void (*m_callback) ();
 
-    void draw(sdl::types::Renderer *renderer) override;
+    void draw(Renderer *renderer) override;
     void on_click(int x, int y) override;
     void update_children() override;
 public:

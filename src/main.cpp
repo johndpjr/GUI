@@ -7,6 +7,9 @@ void doSomething() {
 }
 
 int main() {
+    if (sdl::sys::init(sdl::INIT_VIDEO) < 0)
+        throw std::runtime_error(sdl::error::get_error());
+
     Window window ("GUI", 640, 480);
     std::cout << "Root Frame: " << window.root_frame() << std::endl;
 

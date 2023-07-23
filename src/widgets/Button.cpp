@@ -10,11 +10,11 @@ Button::Button(Widget *parent, void (*callback)(), sdl::types::Color bg)
         m_parent->add_child(this);
 }
 
-void Button::draw(sdl::types::Renderer *renderer) {
+void Button::draw(Renderer *renderer) {
     if (!is_shown())
         return;
-    sdl::render::set_draw_color(renderer, m_bg_color.r, m_bg_color.g, m_bg_color.b, m_bg_color.a);
-    sdl::render::fill_rect(renderer, m_rect);
+    renderer->set_draw_color(m_bg_color);
+    renderer->draw_rect(m_rect);
 }
 
 void Button::on_click(int x, int y) {

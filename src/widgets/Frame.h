@@ -20,7 +20,7 @@ private:
     void update_children() override;
 
     // Draws the frame and all its children.
-    void draw(sdl::types::Renderer *renderer) override;
+    void draw(Renderer *renderer) override;
 public:
     void on_click(int x, int y) override;
     void pack(Side side, Direction anchor) override;

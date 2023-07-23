@@ -5,6 +5,7 @@
 
 #include "widgets/Frame.h"
 #include "sdl/types.h"
+#include "renderer/Renderer.h"
 
 class Window {
 public:
@@ -12,7 +13,7 @@ public:
     ~Window();
 private:
     sdl::types::Window *m_window;
-    sdl::types::Renderer *m_renderer;
+    Renderer m_renderer;
     bool m_quit;
     Frame* m_root_frame;
 public:
