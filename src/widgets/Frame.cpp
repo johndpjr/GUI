@@ -1,25 +1,26 @@
 #include "Frame.h"
+#include <algorithm>
 
-Frame::Frame(Frame* parent_frame, SDL_Color bg)
-    : Widget(parent_frame, new SDL_Rect{0,0,0,0}, bg)
+Frame::Frame(Frame* parent_frame, sdl::types::Color bg)
+    : Widget(parent_frame, new sdl::types::Rect{0,0,0,0}, bg)
 {
     if (m_parent != nullptr)
         m_parent->add_child(this);
 }
 
-Frame::Frame(SDL_Rect* window_rect)
+Frame::Frame(sdl::types::Rect *window_rect)
     : Widget(nullptr, window_rect, Colors::WHITE, true)
 {
 }
 
 void Frame::update_children() {
-    int numChildrenShown = std::count_if(m_children.begin(), m_children.end(), [](Widget* w){return w->is_shown();});
+    int num_children_shown = std::count_if(m_children.begin(), m_children.end(), [](Widget* w){return w->is_shown();});
     int x {m_rect->x}, y {0};
-    int new_width = m_rect->w / numChildrenShown;
+    int new_width = m_rect->w / num_children_shown;
     for (auto child: m_children) {
         if (child->is_shown()) {
             delete child->m_rect;
-            auto new_rect = new SDL_Rect {x, y, new_width, m_rect->h};
+            auto new_rect = new sdl::types::Rect {x, y, new_width, m_rect->h};
             child->m_rect = new_rect;
             x += new_width;
         }
@@ -35,12 +36,12 @@ void Frame::pack(Side side, Direction anchor) {
     }
 }
 
-void Frame::draw(SDL_Renderer* renderer) {
+void Frame::draw(sdl::types::Renderer *renderer) {
     if (!is_shown())
         return;
     // Draw this rect
-    SDL_SetRenderDrawColor(renderer, m_bg_color.r, m_bg_color.g, m_bg_color.b, m_bg_color.a);
-    SDL_RenderFillRect(renderer, m_rect);
+    sdl::render::set_draw_color(renderer, m_bg_color.r, m_bg_color.g, m_bg_color.b, m_bg_color.a);
+    sdl::render::fill_rect(renderer, m_rect);
     // Draw all child rects
     for (auto child: m_children)
         child->draw(renderer);

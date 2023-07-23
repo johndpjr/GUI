@@ -1,18 +1,17 @@
 #ifndef GUI_BUTTON_H
 #define GUI_BUTTON_H
-#include <SDL.h>
-#include <functional>
 #include "Widget.h"
+#include "../sdl/sdl.h"
 
 using namespace gui;
 
 class Button: public Widget {
 public:
-    explicit Button(Widget* parent, void (*callback)() = nullptr, SDL_Color bg = Colors::WHITE);
+    explicit Button(Widget *parent, void (*callback)() = nullptr, sdl::types::Color bg = Colors::WHITE);
 private:
     void (*m_callback) ();
 
-    void draw(SDL_Renderer* renderer) override;
+    void draw(sdl::types::Renderer *renderer) override;
     void on_click(int x, int y) override;
     void update_children() override;
 public:

@@ -1,16 +1,16 @@
 #include "Event.h"
 
-Event::Event(SDL_Event e)
+Event::Event(sdl::types::Event e)
     : m_einfo{e}
 {
     switch (e.type) {
-        case SDL_QUIT:
+        case sdl::events::QUIT:
             m_type = EventType::Quit;
             break;
-        case SDL_KEYDOWN:
+        case sdl::events::KEYDOWN:
             m_type = EventType::KeyDown;
             break;
-        case SDL_MOUSEBUTTONDOWN:
+        case sdl::events::MOUSEBUTTONDOWN:
             m_type = EventType::MouseButtonDown;
             break;
         default:

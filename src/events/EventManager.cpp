@@ -14,8 +14,8 @@ void EventManager::RegisterHandlers() {
 }
 
 void EventManager::Update(Window *window) {
-    SDL_Event e;
-    while (SDL_PollEvent(&e)) {
+    sdl::types::Event e;
+    while (sdl::events::poll(&e)) {
         Event event {e};
         DispatchEvent(event, window);
     }

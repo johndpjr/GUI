@@ -1,6 +1,6 @@
 #ifndef GUI_EVENT_H
 #define GUI_EVENT_H
-#include <SDL_events.h>
+#include "../sdl/sdl.h"
 
 enum EventType {
     Quit,
@@ -14,11 +14,11 @@ enum EventType {
 class Event {
 private:
     EventType m_type;
-    SDL_Event m_einfo;
+    sdl::types::Event m_einfo;
 public:
-    explicit Event(SDL_Event e);
+    explicit Event(sdl::types::Event e);
     EventType type() { return m_type; }
-    SDL_Event einfo() { return m_einfo; }
+    sdl::types::Event einfo() { return m_einfo; }
 };
 
 
