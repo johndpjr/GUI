@@ -11,7 +11,7 @@ public:
      * Ctor for Window's m_root_frame (NOT used by user - I am a bad person)
      * @param window_rect The rect bounding the entire window
      */
-    explicit Frame(sdl::types::Rect *window_rect);
+    explicit Frame(const sdl::types::Rect &window_rect);
 
     friend class Window;
 private:
@@ -23,7 +23,7 @@ private:
     void draw(Renderer *renderer) override;
 public:
     void on_click(int x, int y) override;
-    void pack(Side side, Direction anchor) override;
+    void grid(int row, int col) override;
 };
 
 

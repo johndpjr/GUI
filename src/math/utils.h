@@ -2,6 +2,6 @@
 #define GUI_UTILS_H
 #include "../sdl/types.h"
 
-bool intersects(sdl::types::Rect *rect, int x, int y);
+bool intersects(const sdl::types::Rect &rect, int x, int y);
 
 #endif //GUI_UTILS_H

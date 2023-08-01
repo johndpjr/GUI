@@ -15,7 +15,7 @@ private:
     void on_click(int x, int y) override;
     void update_children() override;
 public:
-    void pack(Side side, Direction anchor) override;
+    void grid(int row, int col) override;
 };
 
 

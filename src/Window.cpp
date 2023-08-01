@@ -6,7 +6,7 @@ Window::Window(const std::string& title, int width, int height)
     : m_window{sdl::window::create_window(title.c_str(), sdl::WINDOWPOS_UNDEFINED, sdl::WINDOWPOS_UNDEFINED, width, height, sdl::window::WINDOW_SHOWN)},
       m_renderer{m_window, -1, sdl::render::RENDERER_ACCERLERATED},
       m_quit{false},
-      m_root_frame{new Frame(new sdl::types::Rect{0, 0, width, height})}
+      m_root_frame{new Frame(sdl::types::Rect{0, 0, width, height})}
 {
     if (m_window == nullptr)
         throw std::runtime_error(sdl::error::get_error());
